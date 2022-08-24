@@ -6,6 +6,7 @@ public class Zadatak3a {
 
     //Druga verzija zadatka, sa uvodjenjem vise zagrada:
 
+
     public static boolean isValid(String str) {
 
         boolean valid = true;
