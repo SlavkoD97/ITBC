@@ -1,5 +1,7 @@
 package Kitchen;
 
+import java.text.CollationElementIterator;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Application {
@@ -38,14 +40,40 @@ public class Application {
             }
         }
 
-        if (x == 4) {
-            double y = sc.nextDouble();
-            if (y <= 0){
-                System.out.println(y);}
+        if (x == 9) {
+            System.out.println("Pritisnite 1 za sortiranje od lakseg ka tezem.");
+            System.out.println("Pritisnite 2 za sortiranje od tezeg ka laksem.");
+            int z = sc.nextInt();
+            if (z == 1) {
+                for (int i = 0; i < RecipeDataBase.getAllRecipes().size(); i++) {
+                    for (int j = 0; j < RecipeDataBase.getAllRecipes().size() - i - 1; j++) {
+                        if (RecipeDataBase.getAllRecipes().get(j).getLevel().compareTo(RecipeDataBase.getAllRecipes().get(j + 1).getLevel()) > 0) {
+                            Recipe temp = RecipeDataBase.getAllRecipes().get(j);
+                            RecipeDataBase.getAllRecipes().set(j, RecipeDataBase.getAllRecipes().get(j + 1));
+                            RecipeDataBase.getAllRecipes().set(j + 1, temp);
 
+                        }
+                    }
+                }
+
+            }
+            if (z == 2) {
+                for (int i = 0; i < RecipeDataBase.getAllRecipes().size(); i++) {
+                    for (int j = 0; j < RecipeDataBase.getAllRecipes().size() - i - 1; j++) {
+                        if (RecipeDataBase.getAllRecipes().get(j).getLevel().compareTo(RecipeDataBase.getAllRecipes().get(j + 1).getLevel()) < 0) {
+                            Recipe temp = RecipeDataBase.getAllRecipes().get(j);
+                            RecipeDataBase.getAllRecipes().set(j, RecipeDataBase.getAllRecipes().get(j + 1));
+                            RecipeDataBase.getAllRecipes().set(j + 1, temp);
+                        }
+
+                    }
+                }
+            } for (var y : RecipeDataBase.getAllRecipes()) {
+                System.out.println(y.getRecipeName() + " " + y.getLevel());
+            }
         }
 
-        if (x == 5) {
+        if (x == 10) {
 
         }
     }

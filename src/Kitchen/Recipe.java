@@ -54,6 +54,9 @@ public class Recipe implements Priceable {
         }
     }
 
+    public RecipeLevel getLevel() {
+        return level;
+    }
 
     public Recipe getScaledRecipe (double scale) {
         Scanner sc = new Scanner(System.in);
