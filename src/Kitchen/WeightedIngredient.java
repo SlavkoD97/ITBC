@@ -28,6 +28,8 @@ public class WeightedIngredient extends Ingredient{
         return weight;
     }
 
+
+
     public void setWeight(double weight) {
         this.weight = weight;
     }
