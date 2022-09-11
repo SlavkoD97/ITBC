@@ -39,6 +39,9 @@ public class Application {
         }
 
         if (x == 4) {
+            double y = sc.nextDouble();
+            if (y <= 0){
+                System.out.println(y);}
 
         }
 

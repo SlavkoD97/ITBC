@@ -35,6 +35,7 @@ public class Fridge {
                 if (allIngredients.get(j).getIngredientName().equals(temp.getIngredientName()) && allIngredients.get(j).getWeight() >= temp.getWeight()){
                     flag = true;
                 }
+
             }
             if (!flag){return false;}
         }
