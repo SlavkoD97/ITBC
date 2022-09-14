@@ -44,7 +44,7 @@ public class Fridge {
                 }
             }
         } else {
-            allIngredients.add(ingredient);
+            System.out.println("Nemate tu stvar u frizideru.");;
         }
 
 
@@ -90,6 +90,7 @@ public class Fridge {
         return allIngredients;
     }
 }
+
 
 
 

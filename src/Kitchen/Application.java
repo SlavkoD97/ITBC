@@ -98,10 +98,12 @@ public class Application {
             }
 
             if (x == 4) {
+
                 for (var y : RecipeDataBase.getAllRecipes()) {
                     if (Fridge.canMakeFood(y.getScaledRecipe(50))) {
                         System.out.println(y.getRecipeName());
                     }
+
                 }
 
             }
@@ -286,4 +288,5 @@ public class Application {
         }
     }
 }
+
 
