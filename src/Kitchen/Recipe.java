@@ -25,6 +25,10 @@ public class Recipe implements Priceable {
 
     }
 
+    public Recipe() {
+        recipe = new ArrayList<WeightedIngredient>();
+    }
+
     public String getRecipeName() {
         return recipeName;
     }
@@ -58,11 +62,9 @@ public class Recipe implements Priceable {
         return level;
     }
 
-    public Recipe getScaledRecipe (double scale) {
-        Scanner sc = new Scanner(System.in);
-        String x = sc.nextLine();
-        System.out.println("Unesite naziv novog recepta:");
-        Recipe retVal = new Recipe(x, this.level);
+    public Recipe getScaledRecipe ( double scale) {
+
+        Recipe retVal = new Recipe();
         int p = (int) (100 / scale);
 
         for (int i = 0; i < recipe.size(); i++) {

@@ -34,11 +34,30 @@ public class Application {
             Scanner sc = new Scanner(System.in);
             int x = sc.nextInt();
 
+            if (x == 15){
+                for (var y : Fridge.allIngredients) {
+                    System.out.println(y.getIngredientName() + " " + y.getWeight());
+                }
+
+            }
+
             if (x == 1) {
+                double cena = 0;
                 System.out.println("Unesite ime:");
                 String ime = sc.next();
+                boolean flag = false;
+                for (var ingridient : Fridge.allIngredients) {
+                    if (ime.equals(ingridient.getIngredientName())) {
+                        flag = true;
+                        cena = ingridient.getPrice();
+                    }
+                }
+
+                if (!flag){
                 System.out.println("Unesite cijenu:");
-                double cena = sc.nextDouble();
+                 cena = sc.nextDouble();
+                }
+
                 System.out.println("Unesite kolicinu:");
                 double kolicina = sc.nextDouble();
                 WeightedIngredient i = new WeightedIngredient(ime, cena, kolicina);
@@ -67,6 +86,29 @@ public class Application {
                     }
                 }
             }
+
+            if (x == 4){
+                for (var y : RecipeDataBase.getAllRecipes()){
+                    if (Fridge.canMakeFood(y.getScaledRecipe(50))){
+                        System.out.println(y.getRecipeName());
+                    }
+                }
+
+            }
+
+            if (x == 5){
+                System.out.println("Molimo unesite ime recepta koji zelite da napravite, ponudjeni recepti su:");
+                for (var y : RecipeDataBase.getAllRecipes()){
+                    System.out.println(y.getRecipeName());
+                }
+                String recipeName = sc.next();
+                for (var y : RecipeDataBase.getAllRecipes()){
+                   if (y.getRecipeName().equals(recipeName)){
+                       Fridge.makeFood(y);
+                   }
+                }
+            }
+
 
 
             if (x == 9) {
