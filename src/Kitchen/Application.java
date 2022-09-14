@@ -99,13 +99,13 @@ public class Application {
 
             if (x == 4) {
 
-                for (var y : RecipeDataBase.getAllRecipes()) {
+                /*for (var y : RecipeDataBase.getAllRecipes()) {
                     if (Fridge.canMakeFood(y.getScaledRecipe(50))) {
                         System.out.println(y.getRecipeName());
                     }
 
-                }
-
+                }*/
+                System.out.println("Radi, ali unistava mi dalji rad programa :)");
             }
 
             if (x == 5) {
@@ -167,7 +167,7 @@ public class Application {
                 if (z == 4) level = RecipeLevel.HARD;
                 if (z == 5) level = RecipeLevel.PRO;
                 for (var recipe : RecipeDataBase.getAllRecipes()) {
-                    if (recipe.getPrice() <= z && recipe.getLevel().compareTo(level) == 0) {
+                    if (recipe.getPrice() <= y && recipe.getLevel().compareTo(level) == 0) {
                         System.out.println(recipe.getRecipeName() + " " + recipe.getPrice() + " " + recipe.getLevel());
 
                     }
@@ -274,19 +274,21 @@ public class Application {
                 double z = sc.nextDouble();
 
                 for (var y : RecipeDataBase.getFavoriteRecipes()) {
-                    if (y.getPrice() <= z){
+                    if (y.getPrice() <= z) {
                         System.out.println(y.getRecipeName() + " " + y.getPrice());
                     }
 
                 }
+            }
 
 
-                if (x == 0) {
-                    cooking = false;
-                }
+            if (x == 0) {
+                cooking = false;
             }
         }
     }
 }
+
+
 
 

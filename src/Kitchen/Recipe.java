@@ -12,6 +12,10 @@ public class Recipe implements Priceable {
 
     private ArrayList<WeightedIngredient> recipe;
 
+
+
+
+
     RecipeLevel level;
 
 
@@ -26,7 +30,9 @@ public class Recipe implements Priceable {
     }
 
     public Recipe() {
-        recipe = new ArrayList<WeightedIngredient>();
+        recipe = new ArrayList<>();
+
+
     }
 
     public String getRecipeName() {
@@ -71,8 +77,9 @@ public class Recipe implements Priceable {
             WeightedIngredient temp = recipe.get(i);
             temp.setWeight(temp.getWeight() / p);
 
-        retVal.recipe.add(temp);
+            retVal.addIngredient(temp);
         }
+
         return retVal;
     }
 
@@ -91,6 +98,10 @@ public class Recipe implements Priceable {
             price = price + x.getPrice();
         }
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
 

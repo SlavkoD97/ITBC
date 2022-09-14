@@ -6,6 +6,12 @@ public class RecipeDataBase {
 
     private static ArrayList<Recipe> allRecipes = new ArrayList<>();
 
+    private static ArrayList<Recipe> scaledRecipes = new ArrayList<>();
+
+    public static ArrayList<Recipe> getScaledRecipes() {
+        return scaledRecipes;
+    }
+
     private static ArrayList<Recipe> favoriteRecipes = new ArrayList<>();
 
     public static void addFavRecipe (Recipe recipe) {favoriteRecipes.add(recipe);}
