@@ -16,11 +16,11 @@ public abstract class IngredientsDataBase {
         WeightedIngredient i7 = new WeightedIngredient("pilece meso", 5, 1);
         WeightedIngredient i8 = new WeightedIngredient("kecap", 1, 1);
         WeightedIngredient i9 = new WeightedIngredient("majonez", 1, 1);
-        WeightedIngredient i10 = new WeightedIngredient("pavlaka", 1, 1);
+        WeightedIngredient i10 = new WeightedIngredient("pavlaka", 5, 1);
         WeightedIngredient i11 = new WeightedIngredient("riba", 3, 1);
         WeightedIngredient i12 = new WeightedIngredient("krastavac", 2, 1);
         WeightedIngredient i13 = new WeightedIngredient("masline", 1, 1);
-        WeightedIngredient i14 = new WeightedIngredient("margarin", 2, 1);
+        WeightedIngredient i14 = new WeightedIngredient("aronija", 2, 1);
         WeightedIngredient i15 = new WeightedIngredient("pasteta", 1, 1);
 
 

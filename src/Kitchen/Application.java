@@ -28,17 +28,27 @@ public class Application {
                     "8. Kombinacija 6. i 7.\n" +
                     "9. Sortiranje recepata po tezini\n" +
                     "10. Sortiranje recepata po ceni\n" +
+                    "11. Pogledajte omiljene recepte\n" +
+                    "12. Dodajte  omiljene recepte \n" +
+                    "13. Obrisite omiljene recepte\n" +
+                    "14. Pogledajte omiljene recepte do X dinara\n" +
+                    "15. Pogledajte sve namirnice iz frizidera\n" +
+                    "16. Pogledajte sve postojece recepte \n" +
                     "0 - Izlaz iz kuhinje.");
 
 
             Scanner sc = new Scanner(System.in);
             int x = sc.nextInt();
 
-            if (x == 15){
+            if (x == 15) {
                 for (var y : Fridge.allIngredients) {
                     System.out.println(y.getIngredientName() + " " + y.getWeight());
                 }
-
+            }
+            if (x == 16) {
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    System.out.println(y.getRecipeName() + " " + y.getPrice());
+                }
             }
 
             if (x == 1) {
@@ -53,9 +63,9 @@ public class Application {
                     }
                 }
 
-                if (!flag){
-                System.out.println("Unesite cijenu:");
-                 cena = sc.nextDouble();
+                if (!flag) {
+                    System.out.println("Unesite cijenu:");
+                    cena = sc.nextDouble();
                 }
 
                 System.out.println("Unesite kolicinu:");
@@ -87,28 +97,81 @@ public class Application {
                 }
             }
 
-            if (x == 4){
-                for (var y : RecipeDataBase.getAllRecipes()){
-                    if (Fridge.canMakeFood(y.getScaledRecipe(50))){
+            if (x == 4) {
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    if (Fridge.canMakeFood(y.getScaledRecipe(50))) {
                         System.out.println(y.getRecipeName());
                     }
                 }
 
             }
 
-            if (x == 5){
+            if (x == 5) {
                 System.out.println("Molimo unesite ime recepta koji zelite da napravite, ponudjeni recepti su:");
-                for (var y : RecipeDataBase.getAllRecipes()){
+                for (var y : RecipeDataBase.getAllRecipes()) {
                     System.out.println(y.getRecipeName());
                 }
                 String recipeName = sc.next();
-                for (var y : RecipeDataBase.getAllRecipes()){
-                   if (y.getRecipeName().equals(recipeName)){
-                       Fridge.makeFood(y);
-                   }
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    if (y.getRecipeName().equals(recipeName)) {
+                        Fridge.makeFood(y);
+                    }
                 }
             }
 
+            if (x == 6) {
+                System.out.println("Molimo unesite cenu koju zelite:");
+                double y = sc.nextDouble();
+                for (var recipe : RecipeDataBase.getAllRecipes()) {
+                    if (recipe.getPrice() <= y) {
+                        System.out.println(recipe.getRecipeName() + " " + recipe.getPrice());
+                    }
+                }
+            }
+
+            if (x == 7) {
+                System.out.println("Ponudjene tezine recepta su:\n" +
+                        "BEGINNER (1),EASY (2),MEDIUM (3),HARD (4),PRO (5)\n" +
+                        "Unesite broj pored tezine recepta:");
+                int y = sc.nextInt();
+
+                RecipeLevel level = null;
+                if (y == 1) level = RecipeLevel.BEGINNER;
+                if (y == 2) level = RecipeLevel.EASY;
+                if (y == 3) level = RecipeLevel.MEDIUM;
+                if (y == 4) level = RecipeLevel.HARD;
+                if (y == 5) level = RecipeLevel.PRO;
+
+                for (int i = 0; i < RecipeDataBase.getAllRecipes().size(); i++) {
+                    if (RecipeDataBase.getAllRecipes().get(i).getLevel().compareTo(level) == 0) {
+                        System.out.println(RecipeDataBase.getAllRecipes().get(i).getRecipeName() + " " + RecipeDataBase.getAllRecipes().get(i).getLevel());
+                    }
+                }
+
+            }
+
+            if (x == 8) {
+                System.out.println("Molimo unesite cenu koju zelite:");
+                double y = sc.nextDouble();
+                System.out.println("Ponudjene tezine recepta su:\n" +
+                        "BEGINNER (1),EASY (2),MEDIUM (3),HARD (4),PRO (5)\n" +
+                        "Unesite broj pored tezine recepta:");
+                int z = sc.nextInt();
+
+                RecipeLevel level = null;
+                if (z == 1) level = RecipeLevel.BEGINNER;
+                if (z == 2) level = RecipeLevel.EASY;
+                if (z == 3) level = RecipeLevel.MEDIUM;
+                if (z == 4) level = RecipeLevel.HARD;
+                if (z == 5) level = RecipeLevel.PRO;
+                for (var recipe : RecipeDataBase.getAllRecipes()) {
+                    if (recipe.getPrice() <= z && recipe.getLevel().compareTo(level) == 0) {
+                        System.out.println(recipe.getRecipeName() + " " + recipe.getPrice() + " " + recipe.getLevel());
+
+                    }
+                }
+
+            }
 
 
             if (x == 9) {
@@ -163,8 +226,62 @@ public class Application {
 
                 }
             }
-            if (x == 0) {
-                cooking = false;
+            if (x == 11) {
+                for (var y : RecipeDataBase.getFavoriteRecipes()) {
+                    System.out.println(y.getRecipeName());
+                }
+            }
+
+            if (x == 12) {
+
+                System.out.println("Postojeci recepti su:");
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    if (!RecipeDataBase.getFavoriteRecipes().contains(y))
+                        System.out.println(y.getRecipeName());
+                }
+
+                System.out.println("Koji recept zelite da dodate u omiljene recepte:");
+                String z = sc.next();
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    if (z.equals(y.getRecipeName()) && !RecipeDataBase.getFavoriteRecipes().contains(y)) {
+                        RecipeDataBase.getFavoriteRecipes().add(y);
+                    }
+                }
+
+            }
+
+            if (x == 13) {
+                System.out.println("Omiljeni recepti su:");
+                for (var y : RecipeDataBase.getFavoriteRecipes()) {
+                    System.out.println(y.getRecipeName());
+                }
+                System.out.println("Koji recept zelite da uklonite:");
+                String z = sc.next();
+                Recipe recept = null;
+                for (var y : RecipeDataBase.getFavoriteRecipes()) {
+                    if (z.equals(y.getRecipeName()) && RecipeDataBase.getFavoriteRecipes().contains(y)) {
+                        recept = y;
+                        break;
+                    }
+                }
+                RecipeDataBase.getFavoriteRecipes().remove(recept);
+            }
+
+            if (x == 14) {
+                System.out.println("Unesite cenu do koje zelite da pogledate omiljene recepte:");
+                double z = sc.nextDouble();
+
+                for (var y : RecipeDataBase.getFavoriteRecipes()) {
+                    if (y.getPrice() <= z){
+                        System.out.println(y.getRecipeName() + " " + y.getPrice());
+                    }
+
+                }
+
+
+                if (x == 0) {
+                    cooking = false;
+                }
             }
         }
     }

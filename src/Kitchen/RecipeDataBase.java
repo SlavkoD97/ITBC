@@ -6,6 +6,16 @@ public class RecipeDataBase {
 
     private static ArrayList<Recipe> allRecipes = new ArrayList<>();
 
+    private static ArrayList<Recipe> favoriteRecipes = new ArrayList<>();
+
+    public static void addFavRecipe (Recipe recipe) {favoriteRecipes.add(recipe);}
+
+    public static void removeFavRecipe (Recipe recipe) {favoriteRecipes.remove(recipe);}
+
+    public static ArrayList<Recipe> getFavoriteRecipes() {
+        return favoriteRecipes;
+    }
+
     public static void addRecipe (Recipe recipe){
         allRecipes.add(recipe);
     }
@@ -45,14 +55,19 @@ public class RecipeDataBase {
         r1.addIngredient(Fridge.getAllIngredients().get(1));
         r1.addIngredient(Fridge.getAllIngredients().get(2));
 
-        r2.addIngredient(Fridge.getAllIngredients().get(3));
-        r2.addIngredient(Fridge.getAllIngredients().get(4));
         r2.addIngredient(Fridge.getAllIngredients().get(5));
-        r2.addIngredient(Fridge.getAllIngredients().get(6));
+
+
 
         r3.addIngredient(Fridge.getAllIngredients().get(7));
         r3.addIngredient(Fridge.getAllIngredients().get(8));
 
+        r4.addIngredient(Fridge.getAllIngredients().get(9));
+        r4.addIngredient(Fridge.getAllIngredients().get(9));
+        r4.addIngredient(Fridge.getAllIngredients().get(9));
+        r4.addIngredient(Fridge.getAllIngredients().get(9));
+
+        RecipeDataBase.addFavRecipe(r1);
 
 
 
