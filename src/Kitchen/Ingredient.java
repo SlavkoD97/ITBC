@@ -8,6 +8,7 @@ public abstract class Ingredient implements Priceable{
 
     double price;
 
+
     public Ingredient(String ingredientName, double price) {
         this.ingredientName = ingredientName;
         this.price = price;

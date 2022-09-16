@@ -42,12 +42,12 @@ public class Application {
 
             if (x == 15) {
                 for (var y : Fridge.allIngredients) {
-                    System.out.println(y.getIngredientName() + " " + y.getWeight());
+                    System.out.println(y.getIngredientName() + " " + y.getWeight() + " " + y.getPrice());
                 }
             }
             if (x == 16) {
                 for (var y : RecipeDataBase.getAllRecipes()) {
-                    System.out.println(y.getRecipeName() + " " + y.getPrice());
+                    System.out.println(y.getRecipeName() + " " + y.getPrice() + " " + y.getLevel());
                 }
             }
 
@@ -72,9 +72,6 @@ public class Application {
                 double kolicina = sc.nextDouble();
                 WeightedIngredient i = new WeightedIngredient(ime, cena, kolicina);
                 Fridge.addIngredient(i);
-                for (var y : Fridge.allIngredients) {
-                    System.out.println(y.getIngredientName());
-                }
             }
             if (x == 2) {
                 System.out.println("Unesite ime:");
@@ -85,9 +82,6 @@ public class Application {
 
                 WeightedIngredient i = new WeightedIngredient(ime, cena, kolicina);
                 Fridge.removeIngredient(i);
-                for (var y : Fridge.allIngredients) {
-                    System.out.println(y.getIngredientName());
-                }
             }
             if (x == 3) {
                 for (var y : RecipeDataBase.getAllRecipes()) {
@@ -98,14 +92,15 @@ public class Application {
             }
 
             if (x == 4) {
-
-                /*for (var y : RecipeDataBase.getAllRecipes()) {
-                    if (Fridge.canMakeFood(y.getScaledRecipe(50))) {
+                Recipe temp = new Recipe();
+                for (var y : RecipeDataBase.getAllRecipes()) {
+                    temp = y.getScaledRecipe(50);
+                    if (Fridge.canMakeFood(temp)) {
                         System.out.println(y.getRecipeName());
                     }
 
-                }*/
-                System.out.println("Radi, ali unistava mi dalji rad programa :)");
+                }
+
             }
 
             if (x == 5) {
